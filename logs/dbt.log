@@ -1,0 +1,161 @@
+[0m04:51:43.944237 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735f9e79c5f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735f9c93eb40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735f9cb6bfb0>]}
+
+
+============================== 04:51:43.947785 | 4058b2b5-7a14-45fe-ab43-7387cba3c77b ==============================
+[0m04:51:43.947785 [info ] [MainThread]: Running with dbt=1.10.7
+[0m04:51:43.948270 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'profiles_dir': '/home/lucas/.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt init .', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m04:53:16.251644 [error] [MainThread]: Encountered an error:
+
+[0m04:53:16.254270 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 178, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/dbt/cli/main.py", line 483, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/dbt/task/init.py", line 324, in run
+    project_name = self.get_valid_project_name()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/dbt/task/init.py", line 278, in get_valid_project_name
+    name = click.prompt("Enter a name for your project (letters, digits, underscore)")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/click/termui.py", line 168, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/click/termui.py", line 151, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m04:53:16.256113 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 86.189644, "process_in_blocks": "2072", "process_kernel_time": 0.153898, "process_mem_max_rss": "100476", "process_out_blocks": "16", "process_user_time": 1.275162}
+[0m04:53:16.257066 [debug] [MainThread]: Command `dbt init` failed at 04:53:16.256829 after 86.19 seconds
+[0m04:53:16.257689 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735f9e8dcfb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735f9c291a30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735f9c9854f0>]}
+[0m04:53:16.258245 [debug] [MainThread]: Flushing usage events
+[0m04:53:17.325723 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:53:46.963251 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x747439024bc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74743770bfe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74743770b0b0>]}
+
+
+============================== 04:53:46.966030 | 2b7ca11f-ceeb-4be5-a152-9745224678f3 ==============================
+[0m04:53:46.966030 [info ] [MainThread]: Running with dbt=1.10.7
+[0m04:53:46.966514 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/lucas/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt init .', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m04:55:52.835165 [debug] [MainThread]: Starter project path: /home/lucas/taxi-data-hub/venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m04:55:52.859135 [info ] [MainThread]: 
+Your new dbt project "dbt_taxi_data_hub" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m04:55:52.859861 [info ] [MainThread]: Setting up your profile.
+[0m04:55:59.230800 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 124.93036, "process_in_blocks": "32304", "process_kernel_time": 0.142817, "process_mem_max_rss": "112952", "process_out_blocks": "88", "process_user_time": 1.297959}
+[0m04:55:59.231251 [debug] [MainThread]: Command `dbt init` succeeded at 04:55:59.231156 after 124.93 seconds
+[0m04:55:59.231581 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x747436cd2ea0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74743673f050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x747436ba8bf0>]}
+[0m04:55:59.231916 [debug] [MainThread]: Flushing usage events
+[0m04:56:00.060438 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m05:17:35.338167 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7344297f3d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x734428fa0500>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x734429dca240>]}
+
+
+============================== 05:17:35.341114 | d04a82ed-9ff0-4910-ac2e-998fc54680a2 ==============================
+[0m05:17:35.341114 [info ] [MainThread]: Running with dbt=1.10.7
+[0m05:17:35.341480 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/home/lucas/.dbt', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m05:17:35.341849 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lucas/taxi-data-hub/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m05:17:35.342490 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.03584995, "process_in_blocks": "24", "process_kernel_time": 0.091879, "process_mem_max_rss": "99436", "process_out_blocks": "16", "process_user_time": 0.791917}
+[0m05:17:35.342764 [debug] [MainThread]: Command `dbt run` failed at 05:17:35.342691 after 0.04 seconds
+[0m05:17:35.342982 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x734429d43c20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7344297f3d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7344292aa780>]}
+[0m05:17:35.343183 [debug] [MainThread]: Flushing usage events
+[0m05:17:35.931970 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:17:27.330617 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d10babbc7a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d10ba976ff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d10bc09e210>]}
+
+
+============================== 04:17:27.333694 | 800a1a48-836c-40db-833b-20be89960788 ==============================
+[0m04:17:27.333694 [info ] [MainThread]: Running with dbt=1.10.7
+[0m04:17:27.334057 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/lucas/.dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m04:17:27.334353 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lucas/taxi-data-hub/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m04:17:27.334961 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.038907684, "process_in_blocks": "48648", "process_kernel_time": 0.102907, "process_mem_max_rss": "99256", "process_out_blocks": "8", "process_user_time": 0.926164}
+[0m04:17:27.335260 [debug] [MainThread]: Command `dbt run` failed at 04:17:27.335186 after 0.04 seconds
+[0m04:17:27.335508 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d10ba3a07d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d10ba28f7a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d10ba449f40>]}
+[0m04:17:27.335751 [debug] [MainThread]: Flushing usage events
+[0m04:17:28.121329 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:33:35.888128 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a52660e2f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a52658aaea0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a52677d6ff0>]}
+
+
+============================== 04:33:35.892722 | 129fd420-8846-4240-86e1-857a6bebc89d ==============================
+[0m04:33:35.892722 [info ] [MainThread]: Running with dbt=1.10.7
+[0m04:33:35.893085 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/home/lucas/.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m04:33:35.893370 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lucas/taxi-data-hub/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m04:33:35.894078 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.036781225, "process_in_blocks": "272", "process_kernel_time": 0.104815, "process_mem_max_rss": "99832", "process_out_blocks": "16", "process_user_time": 0.786113}
+[0m04:33:35.894386 [debug] [MainThread]: Command `dbt run` failed at 04:33:35.894325 after 0.04 seconds
+[0m04:33:35.894599 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a52659aa330>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5265c199d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a526523e090>]}
+[0m04:33:35.894835 [debug] [MainThread]: Flushing usage events
+[0m04:33:36.495854 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:44:44.591149 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7958998d8b00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x795897494560>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x795897eb21e0>]}
+
+
+============================== 04:44:44.592958 | a3e1caac-fcde-4649-9360-6c1c3137e8f9 ==============================
+[0m04:44:44.592958 [info ] [MainThread]: Running with dbt=1.10.7
+[0m04:44:44.593521 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/home/lucas/.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True'}
+[0m04:44:44.593849 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lucas/taxi-data-hub/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m04:44:44.594692 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.03568218, "process_in_blocks": "0", "process_kernel_time": 0.096404, "process_mem_max_rss": "99676", "process_out_blocks": "8", "process_user_time": 0.793145}
+[0m04:44:44.595032 [debug] [MainThread]: Command `dbt run` failed at 04:44:44.594966 after 0.04 seconds
+[0m04:44:44.595223 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x795897088350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7958998d8b00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x795897eb21e0>]}
+[0m04:44:44.595429 [debug] [MainThread]: Flushing usage events
+[0m04:44:45.421198 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m05:07:32.799521 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75ebe8150830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75ebe645fe90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75ebe658c770>]}
+
+
+============================== 05:07:32.803193 | 2b868031-3fa3-4ffe-a3e7-79dfdc11dc4c ==============================
+[0m05:07:32.803193 [info ] [MainThread]: Running with dbt=1.10.7
+[0m05:07:32.803540 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/lucas/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m05:07:32.803915 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lucas/taxi-data-hub/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m05:07:32.805013 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.039065193, "process_in_blocks": "59440", "process_kernel_time": 0.11848, "process_mem_max_rss": "99672", "process_out_blocks": "8", "process_user_time": 0.820246}
+[0m05:07:32.805333 [debug] [MainThread]: Command `dbt run` failed at 05:07:32.805267 after 0.04 seconds
+[0m05:07:32.805561 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75ebe85b5310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75ebe662a0c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75ebe5a936e0>]}
+[0m05:07:32.805793 [debug] [MainThread]: Flushing usage events
+[0m05:07:33.907793 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m05:17:16.220072 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c7b35d5ee0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c7b2db4620>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c7b397aa20>]}
+
+
+============================== 05:17:16.222825 | 20ab89e3-c74f-425a-8dfe-d7905330f69b ==============================
+[0m05:17:16.222825 [info ] [MainThread]: Running with dbt=1.10.7
+[0m05:17:16.223221 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'profiles_dir': '/home/lucas/.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'invocation_command': 'dbt run', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m05:17:16.223820 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lucas/taxi-data-hub/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m05:17:16.224790 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.03749304, "process_in_blocks": "50288", "process_kernel_time": 0.138243, "process_mem_max_rss": "99516", "process_out_blocks": "16", "process_user_time": 0.790579}
+[0m05:17:16.225059 [debug] [MainThread]: Command `dbt run` failed at 05:17:16.224997 after 0.04 seconds
+[0m05:17:16.225269 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c7b3111df0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c7b3bde030>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c7b3632ae0>]}
+[0m05:17:16.225484 [debug] [MainThread]: Flushing usage events
+[0m05:17:17.041312 [debug] [MainThread]: An error was encountered while trying to flush usage events

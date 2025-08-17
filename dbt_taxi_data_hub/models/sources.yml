@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw_taxi_data
+    description: "Raw taxi data files"
+    tables:
+      - name: yellow_taxi
+        description: "Yellow taxi trip data"
+        meta:
+          file_path: "../raw_data/yellow/*.parquet"
