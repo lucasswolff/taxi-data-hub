@@ -22,4 +22,5 @@ SELECT
     congestion_surcharge::FLOAT as congestion_surcharge,
     ehail_fee::FLOAT as ehail_fee, 
     total_amount::FLOAT as total_amount,
+    cbd_congestion_fee::FLOAT as cbd_congestion_fee
 FROM stg_green

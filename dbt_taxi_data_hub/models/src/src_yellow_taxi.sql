@@ -1,2 +1,2 @@
 SELECT *
-FROM '../raw_data/yellow/*.parquet'
+FROM read_parquet('../raw_data/yellow/*.parquet', union_by_name = true)
