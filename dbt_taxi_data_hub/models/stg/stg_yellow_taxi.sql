@@ -20,5 +20,6 @@ SELECT
     improvement_surcharge::FLOAT as improvement_surcharge,
     total_amount::FLOAT as total_amount,
     congestion_surcharge::FLOAT as congestion_surcharge,
-    Airport_fee::FLOAT as airport_fee
+    Airport_fee::FLOAT as airport_fee,
+    cbd_congestion_fee::FLOAT as cbd_congestion_fee
 FROM stg_yellow
