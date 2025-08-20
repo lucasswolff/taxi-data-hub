@@ -1,9 +1,9 @@
 {{ config(materilized='table') }}
 
-WITH seed_ratecode AS (
-    SELECT * FROM {{ ref('seed_ratecode') }}
+with seed_ratecode as (
+    select * from {{ ref('seed_ratecode') }}
 )
-SELECT 
-    RatecodeID::INT AS ratecode_id,  
-    RatecodeDesc::VARCHAR AS ratecode_desc
-FROM seed_ratecode
+select 
+    ratecodeid::int as ratecode_id,  
+    ratecodedesc::varchar as ratecode_desc
+from seed_ratecode
