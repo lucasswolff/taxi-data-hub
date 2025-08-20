@@ -1,9 +1,9 @@
 {{ config(materilized='table') }}
 
-WITH seed_trip_type AS (
-    SELECT * FROM {{ ref('seed_trip_type') }}
+with seed_trip_type as (
+    select * from {{ ref('seed_trip_type') }}
 )
-SELECT 
-    trip_type::INT AS trip_type,  
-    trip_type_desc::VARCHAR AS trip_type_desc
-FROM seed_trip_type
+select 
+    trip_type::int as trip_type,  
+    trip_type_desc::varchar as trip_type_desc
+from seed_trip_type
