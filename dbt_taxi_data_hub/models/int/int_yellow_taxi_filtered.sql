@@ -21,5 +21,19 @@ filter_reversal as ( -- filter reversal (e.g. 10 + (-10) = 0 --> -10 is the reve
     where r.index_ is null  -- anti-join
 ),
 filter_zero_negative as (
-    -- revisar a forma que fiz no spark. Nao sei se ta certo
+    select * from filter_reversal
+    where 
+        not (trip_distance = 0 and total_amount = 0) -- remove when both are zero
+        and trip_distance >= 0
+        and total_amount >= 0
+        and fare_amount >= 0
+),
+filter_duplicates as (
+    select 
+        *,
+        count(*) over (partition by trip_sk order by total_amount desc) as row_number
+    from int_yellow_taxi_cleansed 
+    qualify row_number = 1
 )
+select * exclude(row_number)
+from filter_duplicates
