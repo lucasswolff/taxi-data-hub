@@ -1,5 +1,3 @@
-{{ config(materilized='table') }}
-
 with seed_taxi_zone as (
     select * from {{ ref('seed_taxi_zone') }}
 )

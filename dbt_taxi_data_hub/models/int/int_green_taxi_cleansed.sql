@@ -1,1 +1,1 @@
-{{ transform_taxi('stg_green_taxi', 'green') }}
+{{ clean_taxi('stg_green_taxi', 'green') }}

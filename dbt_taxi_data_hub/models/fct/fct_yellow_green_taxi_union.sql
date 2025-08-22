@@ -1,0 +1,87 @@
+{{ config(materialized = 'view') }}
+
+with yellow as (
+    select * from {{ ref('fct_yellow_taxi') }} 
+),
+green as (
+        select * from {{ ref('fct_green_taxi') }} 
+)
+select 
+    trip_sk,
+    taxi_type,
+    file_date,
+    pickup_datetime,
+    dropoff_datetime,
+    pickup_location_id,
+    pickup_borough,
+    pickup_zone,
+    pickup_service_zone,
+    dropoff_location_id,
+    dropoff_borough,
+    dropoff_zone,
+    dropoff_service_zone,
+    vendor_id,
+    vendor_desc,
+    trip_type,
+    trip_type_desc,
+    ratecode_id,
+    ratecode_desc,
+    payment_type,
+    payment_type_desc,
+    store_and_fwd_flag,
+    passenger_count,
+    trip_distance,
+    trip_duration_min,
+    fare_amount,
+    extra,
+    mta_tax,
+    tip_amount,
+    tolls_amount,
+    improvement_surcharge,
+    congestion_surcharge,
+    airport_fee,
+    0 as ehail_fee,
+    cbd_congestion_fee,
+    total_amount
+from yellow
+
+union all
+
+select
+    trip_sk,
+    taxi_type,
+    file_date,
+    pickup_datetime,
+    dropoff_datetime,
+    pickup_location_id,
+    pickup_borough,
+    pickup_zone,
+    pickup_service_zone,
+    dropoff_location_id,
+    dropoff_borough,
+    dropoff_zone,
+    dropoff_service_zone,
+    vendor_id,
+    vendor_desc,
+    trip_type,
+    trip_type_desc,
+    ratecode_id,
+    ratecode_desc,
+    payment_type,
+    payment_type_desc,
+    store_and_fwd_flag,
+    passenger_count,
+    trip_distance,
+    trip_duration_min,
+    fare_amount,
+    extra,
+    mta_tax,
+    tip_amount,
+    tolls_amount,
+    improvement_surcharge,
+    congestion_surcharge,
+    0 as airport_fee,
+    ehail_fee,
+    cbd_congestion_fee,
+    total_amount
+from green
