@@ -1,5 +1,3 @@
-{{ config(materilized='table') }}
-
 with seed_ratecode as (
     select * from {{ ref('seed_ratecode') }}
 )
