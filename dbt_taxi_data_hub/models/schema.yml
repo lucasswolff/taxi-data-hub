@@ -1,0 +1,468 @@
+version: 2
+
+models:
+  - name: dim_payment_type
+    description: payment type dictonary 
+    columns:
+
+      - name: payment_type
+        tests:
+          - unique
+          - not_null
+
+      - name: payment_type_desc
+        tests:
+          - not_null
+
+  - name: dim_ratecode
+    description: rate code dictonary 
+    columns:
+
+      - name: ratecode_id
+        tests:
+          - unique
+          - not_null
+
+      - name: ratecode_desc
+        tests:
+          - not_null
+
+  - name: dim_trip_type
+    description: trip type dictonary 
+    columns:
+
+      - name: trip_type
+        tests:
+          - unique
+          - not_null
+
+      - name: trip_type_desc
+        tests:
+          - not_null
+
+  - name: dim_vendor
+    description: vendor dictonary 
+    columns:
+
+      - name: vendor_id
+        tests:
+          - unique
+          - not_null
+
+      - name: vendor_desc
+        tests:
+          - not_null
+
+  - name: dim_taxi_zone
+    description: borough, zone and service_zone related to a location id
+    columns:
+
+      - name: location_id
+        tests:
+          - unique
+          - not_null
+
+      - name: borough
+        tests:
+          - not_null
+
+      - name: zone
+        tests:
+          - not_null
+
+      - name: service_zone
+        tests:
+          - not_null
+
+  - name: int_yellow_taxi_cleansed
+    description: '{{ doc("int_yellow_taxi_cleansed") }}'
+    columns:
+
+      - name: payment_type
+        tests:
+        - relationships:
+            to: ref('dim_payment_type')
+            field: payment_type
+
+      - name: ratecode_id
+        tests:
+        - relationships:
+            to: ref('dim_ratecode')
+            field: ratecode_id
+
+      - name: trip_type
+        tests:
+        - relationships:
+            to: ref('dim_trip_type')
+            field: trip_type
+
+      - name: vendor_id
+        tests:
+        - relationships:
+            to: ref('dim_vendor')
+            field: vendor_id
+
+      - name: pickup_location_id
+        tests:
+        - relationships:
+            to: ref('dim_taxi_zone')
+            field: location_id
+
+      - name: dropoff_location_id
+        tests:
+        - relationships:
+            to: ref('dim_taxi_zone')
+            field: location_id
+
+  - name: int_green_taxi_cleansed
+    description:  '{{ doc("int_green_taxi_cleansed") }}'
+  
+  - name: int_yellow_taxi_filtered
+    description: '{{ doc("int_yellow_taxi_filtered") }}'
+
+  - name: int_green_taxi_filtered
+    description: '{{ doc("int_green_taxi_filtered") }}'
+
+  - name: int_yellow_taxi_integrated
+    description: '{{ doc("int_yellow_taxi_integrated") }}'
+
+  - name: int_green_taxi_integrated
+    description: '{{ doc("int_green_taxi_integrated") }}'
+
+  - name: fct_yellow_taxi
+    description: '{{ doc("fct_yellow_taxi") }}'
+    columns:
+
+      - name: trip_sk
+        tests:
+          - unique
+          - not_null
+        
+      - name: taxi_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['yellow']
+      
+      - name: file_date
+        description: first day of the month (01) from parquet file year and month
+        tests: 
+          - not_null
+          - first_of_month_date
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+
+      - name: pickup_datetime
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+
+      - name: dropoff_datetime
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+
+      - name: pickup_location_id
+        tests: 
+          - not_null
+
+      - name: pickup_borough
+        tests: 
+          - not_null
+    
+      - name: pickup_zone
+        tests: 
+          - not_null
+
+      - name: pickup_service_zone
+        tests: 
+          - not_null
+
+      - name: dropoff_location_id
+        tests: 
+          - not_null
+
+      - name: dropoff_borough
+        tests: 
+          - not_null
+    
+      - name: dropoff_zone
+        tests: 
+          - not_null
+
+      - name: dropoff_service_zone
+        tests: 
+          - not_null
+
+      - name: vendor_id
+        tests: 
+          - not_null
+
+      - name: vendor_desc
+        tests: 
+          - not_null
+
+      - name: trip_type
+        tests: 
+          - not_null
+
+      - name: trip_type_desc
+        tests: 
+          - not_null
+
+      - name: ratecode_id
+        tests: 
+          - not_null
+
+      - name: ratecode_desc
+        tests: 
+          - not_null
+
+      - name: payment_type
+        tests: 
+          - not_null
+
+      - name: payment_type_desc
+        tests: 
+          - not_null
+
+      - name: store_and_fwd_flag
+        tests: 
+          - not_null
+          - accepted_values:
+              values: ['Y','N']
+
+      - name: passenger_count
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0.000001  # greater than zero
+
+      - name: trip_distance
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+      - name: trip_duration_min
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+      - name: fare_amount
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+      - name: extra
+        tests: 
+          - not_null
+
+      - name: mta_tax
+        tests: 
+          - not_null
+
+      - name: tip_amount
+        tests: 
+          - not_null
+
+      - name: tolls_amount
+        tests: 
+          - not_null
+
+      - name: improvement_surcharge
+        tests: 
+          - not_null
+
+      - name: congestion_surcharge
+        tests: 
+          - not_null
+
+      - name: airport_fee
+        tests: 
+          - not_null
+
+      - name: cbd_congestion_fee
+        tests: 
+          - not_null
+
+      - name: total_amount
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+  - name: fct_green_taxi
+    description: '{{ doc("fct_green_taxi") }}'
+    columns:
+
+      - name: trip_sk
+        tests:
+          - unique
+          - not_null
+        
+      - name: taxi_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['green']
+      
+      - name: file_date
+        description: first day of the month (01) from parquet file year and month
+        tests: 
+          - not_null
+          - first_of_month_date
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+
+      - name: pickup_datetime
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+
+      - name: dropoff_datetime
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+
+      - name: pickup_location_id
+        tests: 
+          - not_null
+
+      - name: pickup_borough
+        tests: 
+          - not_null
+    
+      - name: pickup_zone
+        tests: 
+          - not_null
+
+      - name: pickup_service_zone
+        tests: 
+          - not_null
+
+      - name: dropoff_location_id
+        tests: 
+          - not_null
+
+      - name: dropoff_borough
+        tests: 
+          - not_null
+    
+      - name: dropoff_zone
+        tests: 
+          - not_null
+
+      - name: dropoff_service_zone
+        tests: 
+          - not_null
+
+      - name: vendor_id
+        tests: 
+          - not_null
+
+      - name: vendor_desc
+        tests: 
+          - not_null
+
+      - name: trip_type
+        tests: 
+          - not_null
+
+      - name: trip_type_desc
+        tests: 
+          - not_null
+
+      - name: ratecode_id
+        tests: 
+          - not_null
+
+      - name: ratecode_desc
+        tests: 
+          - not_null
+
+      - name: payment_type
+        tests: 
+          - not_null
+
+      - name: payment_type_desc
+        tests: 
+          - not_null
+
+      - name: store_and_fwd_flag
+        tests: 
+          - not_null
+          - accepted_values:
+              values: ['Y','N']
+
+      - name: passenger_count
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0.000001  # greater than zero
+
+      - name: trip_distance
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+      - name: trip_duration_min
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+      - name: fare_amount
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+      - name: extra
+        tests: 
+          - not_null
+
+      - name: mta_tax
+        tests: 
+          - not_null
+
+      - name: tip_amount
+        tests: 
+          - not_null
+
+      - name: tolls_amount
+        tests: 
+          - not_null
+
+      - name: improvement_surcharge
+        tests: 
+          - not_null
+
+      - name: congestion_surcharge
+        tests: 
+          - not_null
+
+      - name: ehail_fee
+        tests: 
+          - not_null
+
+      - name: cbd_congestion_fee
+        tests: 
+          - not_null
+
+      - name: total_amount
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  # not negative
+
+  - name: fct_yellow_green_taxi_union
+    description: union fct_yellow_taxi and fct_green_taxi
+
