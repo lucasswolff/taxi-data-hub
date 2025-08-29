@@ -1,4 +1,13 @@
-{{ config(materialized = 'view') }}
+{% set adapter = target.type %}
+
+{{ config(
+    materialized = 'incremental',
+    incremental_strategy = 'merge' if adapter in ['snowflake', 'bigquery', 'redshift', 'databricks'] else 'append',
+    unique_key = 'trip_sk'
+) }}
+
+{% set start_date = var('start_date', False) %}
+{% set end_date   = var('end_date', False) %}
 
 with taxi_ratios as (
     select * from {{ ref('feat_taxi_calcs') }}
@@ -23,5 +32,18 @@ outliers as (
             else false
         end as fare_amount_outlier_flag
     from taxi_ratios
+    where 1=1
+    {% if is_incremental() %}
+        {% if start_date and end_date %}
+
+            and file_date >= '{{ start_date }}'
+            and file_date <= '{{ end_date }}'
+
+        {% else %}
+
+            and file_date > (select max(file_date) from {{ this }})
+
+        {% endif %}
+    {% endif %}
 )
 select * from outliers

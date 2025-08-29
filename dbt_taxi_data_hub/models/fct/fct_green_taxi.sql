@@ -18,10 +18,10 @@ fct_incremental as (
     from base
     where 1=1
     {% if is_incremental() %}
-        {% if var("start_date", False) and var("end_date", False) %}
+        {% if start_date and end_date %}
 
-            and file_date >= '{{ var("start_date") }}'
-            and file_date <= '{{ var("end_date") }}'
+            and file_date >= '{{ start_date }}'
+            and file_date <= '{{ end_date }}'
 
         {% else %}
 
@@ -37,10 +37,12 @@ select
     pickup_datetime,
     dropoff_datetime,
     pickup_location_id,
+    pickup_borough_id,
     pickup_borough,
     pickup_zone,
     pickup_service_zone,
     dropoff_location_id,
+    dropoff_borough_id,
     dropoff_borough,
     dropoff_zone,
     dropoff_service_zone,

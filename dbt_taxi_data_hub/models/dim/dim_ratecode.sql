@@ -1,3 +1,5 @@
+{{ config(materialized = 'view') }}
+
 with seed_ratecode as (
     select * from {{ ref('seed_ratecode') }}
 )

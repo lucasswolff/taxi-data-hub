@@ -1,3 +1,5 @@
+{{ config(materialized = 'view') }}
+
 with seed_vendor as (
     select * from {{ ref('seed_vendor') }}
 )
