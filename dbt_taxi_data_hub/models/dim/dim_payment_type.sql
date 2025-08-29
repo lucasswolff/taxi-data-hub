@@ -1,3 +1,5 @@
+{{ config(materialized = 'view') }}
+
 with seed_payment_type as (
     select * from {{ ref('seed_payment_type') }}
 )

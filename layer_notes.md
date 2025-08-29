@@ -42,9 +42,8 @@ Measures and metrics
 References to dimension tables
 Core of star schema design
 
-## Marts (mart_ or folder-based)
+## Marts (mart_)
 
 Final, business-ready datasets
-Department-specific views (finance, marketing, etc.)
 Optimized for specific use cases
 What analysts and BI tools consume

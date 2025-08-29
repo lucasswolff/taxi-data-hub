@@ -1,3 +1,5 @@
+{{ config(materialized = 'view') }}
+
 with seed_trip_type as (
     select * from {{ ref('seed_trip_type') }}
 )
