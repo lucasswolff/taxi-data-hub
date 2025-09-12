@@ -1,0 +1,21 @@
+dbt_taxi_data_hub:
+  outputs:
+    dev:
+      type: duckdb
+      path: ./dbt_duckdb.db  # persistent file instead of in-memory
+      extensions:
+        - parquet
+      threads: 4
+
+    prod: #placeholder
+      type: snowflake
+      account: "<account_id>"
+      user: "<user>"
+      password: "<password>"
+      role: "<role>"
+      warehouse: "<warehouse>"
+      database: "<database>"
+      schema: "<schema>"
+      threads: 4
+
+  target: dev
