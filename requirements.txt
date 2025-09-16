@@ -1,0 +1,6 @@
+# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+openmeteo_requests==1.7.1
+requests_cache==1.2.1
+retry_requests==2.0.0
+pandas==2.3.2
+pyarrow==21.0.0
