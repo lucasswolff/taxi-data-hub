@@ -34,7 +34,15 @@ models:
     +materialized: view
     dim:
       +materialized: table
+      +schema: dim
     stg:
       +materialized: view
+      +schema: stg
+    fct:
+      +schema: fct
+    mart:
+      +schema: mart
+    int:
+      +schema: int
     src:
-       +materialized: ephemeral
+      +materialized: ephemeral

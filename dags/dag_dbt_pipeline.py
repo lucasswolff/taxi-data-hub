@@ -17,7 +17,7 @@ dataset_weather = Dataset("file:///weather/*.parquet")
     tags=["dbt", "analytics", "taxi-data-hub"],
 )
 def dbt_pipeline():
-
+    
     # Run dbt clean to avoid any cached files 
     dbt_clean = BashOperator(
         task_id="dbt_clean",
