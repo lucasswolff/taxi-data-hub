@@ -11,11 +11,11 @@ joins as (
         tp.trip_type_desc,
         tz_pickup.borough_id as pickup_borough_id,
         tz_pickup.borough as pickup_borough,
-        tz_pickup."zone" as pickup_zone,
+        tz_pickup.zone as pickup_zone,
         tz_pickup.service_zone as pickup_service_zone,
         tz_dropoff.borough_id as dropoff_borough_id,
         tz_dropoff.borough as dropoff_borough,
-        tz_dropoff."zone" as dropoff_zone,
+        tz_dropoff.zone as dropoff_zone,
         tz_dropoff.service_zone as dropoff_service_zone,
         v.vendor_desc
     from base b

@@ -2,7 +2,7 @@ with stg_weather as (
     select * from {{ ref('src_weather') }}
 )
 select
-    "datetime"::timestamp as "datetime",
+    datetime::timestamp as datetime,
     latitude::float as latitude,
     longitude::float as longitude,
     borough::varchar as borough,

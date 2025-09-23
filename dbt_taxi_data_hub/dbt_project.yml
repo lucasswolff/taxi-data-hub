@@ -46,3 +46,7 @@ models:
       +schema: int
     src:
       +materialized: ephemeral
+
+seeds:
+  dbt_taxi_data_hub:
+    +schema: raw
