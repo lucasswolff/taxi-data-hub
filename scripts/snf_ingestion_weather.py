@@ -75,6 +75,8 @@ def upload_snowflake(df_weather, table_name, connection_params):
     session = Session.builder.configs(connection_params).create()
 	
     try:
+        df_weather.columns = [c.upper() for c in df_weather.columns]
+        
         snow_df_weather = session.create_dataframe(df_weather)
 
         # Write to Snowflake

@@ -9,14 +9,14 @@ dataset_taxi_location = Dataset("file:///dbt_taxi_data_hub/seeds/seed_taxi_zone.
 
 
 @dag(
-    dag_id="ingestion_taxi",
+    dag_id="ingestion_taxi_local",
     description="Run python script to download from url the taxi data",
     schedule="0 10 * * *", #10 AM UTC
     start_date=datetime(2025, 9, 15),
     catchup=False,
-    tags=["python", "analytics", "taxi-data-hub"],
+    tags=["python", "analytics", "taxi-data-hub", "local"],
 )
-def ingestion_taxi():
+def ingestion_taxi_local():
 
     #calls the function to ingest parquet files from taxi
     task_download_raw = PythonOperator(
@@ -35,4 +35,4 @@ def ingestion_taxi():
     task_download_raw
     task_download_location
 
-ingestion_taxi()
+ingestion_taxi_local()
