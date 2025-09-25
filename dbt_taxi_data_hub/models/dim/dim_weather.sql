@@ -7,12 +7,12 @@ seed_borough as (
 weather_dedup as (
     select 
         *, 
-        row_number() over (partition by "datetime", borough order by api_inserted_datetime desc) as row_n
+        row_number() over (partition by datetime, borough order by api_inserted_datetime desc) as row_n
     from weather_data
     qualify row_n = 1
 )
 select 
-    w."datetime",
+    w.datetime,
     w.latitude,
     w.longitude,
     b.borough_id::int as borough_id,

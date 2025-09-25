@@ -13,7 +13,7 @@ with taxi_outl as (
     select * from {{ ref('feat_taxi_outliers') }}
     where 1=1
     {% if is_incremental() %}
-        {% if start_date and end_date %}
+        {% if start_date or end_date %}
 
             and file_date >= '{{ start_date }}'
             and file_date <= '{{ end_date }}'

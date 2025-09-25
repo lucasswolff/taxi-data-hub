@@ -41,8 +41,12 @@ correct_timestamp_step1 as (
                  and extract(day from pickup_datetime) = 31
                 then pickup_datetime
 
-            -- otherwise: rebuild datetime with file_year + original month/day/time
-            else make_timestamp(
+            -- otherwise: rebuild datetime with file_year (make_timestamp in duckdb, timestamp_from_parts in snf)
+            {% if target.name == 'dev' %}
+                else make_timestamp
+            {% else %}
+                else timestamp_from_parts
+            {% endif %} (
                      file_year::int,
                      extract(month from pickup_datetime),
                      extract(day from pickup_datetime),
@@ -73,8 +77,12 @@ correct_timestamp_step1 as (
                  and day(dropoff_datetime) = 1
                 then dropoff_datetime
 
-            -- otherwise: rebuild datetime with file_year
-            else make_timestamp(
+            -- otherwise: rebuild datetime with file_year (make_timestamp in duckdb, timestamp_from_parts in snf)
+            {% if target.name == 'dev' %}
+                else make_timestamp
+            {% else %}
+                else timestamp_from_parts
+            {% endif %} (
                      file_year::int,
                      month(dropoff_datetime),
                      day(dropoff_datetime),
@@ -132,7 +140,11 @@ replace_nulls_and_zeros as (
 final_calculations as (
     select 
         *,  
+        {% if target.name == 'dev' %}
         round(extract(epoch from (dropoff_datetime - pickup_datetime)) / 60.0, 2) as trip_duration_min,
+        {% else %}
+        round(datediff(second, pickup_datetime, dropoff_datetime) / 60.0, 2) as trip_duration_min,
+        {% endif %}
         '{{ taxi_type }}' as taxi_type
     from replace_nulls_and_zeros
 )

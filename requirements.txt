@@ -3,4 +3,7 @@ openmeteo_requests==1.7.1
 requests_cache==1.2.1
 retry_requests==2.0.0
 pandas==2.3.2
-pyarrow==21.0.0
+pyarrow==18.1.0
+snowflake==1.7.0
+dotenv==0.9.9
+snowflake-snowpark-python==1.39.0

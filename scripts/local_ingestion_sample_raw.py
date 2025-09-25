@@ -43,7 +43,7 @@ def main():
     years = ['2024', '2025']
     
     #months = [f'{i:02}' for i in range(1, 13)] # 01, 02, ... 12
-    months = ['01', '02', '03', '04']
+    months = ['01', '02']
 
     for vehicle in vehicles:
         for year in years:

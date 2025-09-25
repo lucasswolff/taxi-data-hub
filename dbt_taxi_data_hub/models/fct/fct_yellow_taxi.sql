@@ -18,7 +18,7 @@ fct_incremental as (
     from base
     where 1=1
     {% if is_incremental() %}
-        {% if start_date and end_date %}
+        {% if start_date or end_date %}
 
             and file_date >= '{{ start_date }}'
             and file_date <= '{{ end_date }}'
@@ -34,8 +34,8 @@ select
     trip_sk,
     taxi_type,
     file_date,
-    pickup_datetime,
-    dropoff_datetime,
+    pickup_datetime::datetime as pickup_datetime,
+    dropoff_datetime::datetime as dropoff_datetime,
     pickup_location_id,
     pickup_borough_id,
     pickup_borough,

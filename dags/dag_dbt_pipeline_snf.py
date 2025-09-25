@@ -3,20 +3,26 @@ from airflow.decorators import dag
 from airflow.operators.bash import BashOperator
 from airflow.datasets import Dataset
 
-dataset_raw_taxi = Dataset("file:///raw_data/*.parquet")
+dataset_raw_taxi = Dataset("raw_taxi")
 dataset_taxi_location = Dataset("file:///dbt_taxi_data_hub/seeds/seed_taxi_zone.csv")
-dataset_weather = Dataset("file:///weather/*.parquet")
+dataset_weather = Dataset("raw_weather")
 
 @dag(
-    dag_id="dbt_pipeline",
+    dag_id="dbt_pipeline_snf",
     description="Run dbt models with Airflow",
     schedule=[dataset_raw_taxi, dataset_taxi_location, dataset_weather],
-    start_date=datetime(2025, 9, 11),
+    start_date=datetime(2025, 9, 23),
     catchup=False,
     params={"dbt_full_refresh": False},
-    tags=["dbt", "analytics", "taxi-data-hub"],
+    tags=["dbt", "analytics", "taxi-data-hub", "snowflake"],
 )
-def dbt_pipeline():
+def dbt_pipeline_snf():
+    
+    # Run dbt clean to avoid any cached files 
+    dbt_env_export = BashOperator(
+        task_id="dbt_env_export",
+        bash_command="cd /usr/local/airflow && export $(grep -v '^#' .env | xargs)",
+    )
 
     # Run dbt clean to avoid any cached files 
     dbt_clean = BashOperator(
@@ -33,7 +39,7 @@ def dbt_pipeline():
     # Run dbt seed
     dbt_seed = BashOperator(
         task_id="dbt_seed",
-        bash_command="cd /usr/local/airflow/dbt_taxi_data_hub && dbt seed --profiles-dir ..",
+        bash_command="cd /usr/local/airflow/dbt_taxi_data_hub && dbt seed --target prod --profiles-dir ..",
     )
 
     ## Run and test dbt models
@@ -43,7 +49,7 @@ def dbt_pipeline():
         task_id="dbt_run_src",
         bash_command=(
             "cd /usr/local/airflow/dbt_taxi_data_hub && "
-            "dbt run --select models/src --profiles-dir .. "
+            "dbt run --select models/src --target prod --profiles-dir .. "
             ),
     )
 
@@ -52,7 +58,7 @@ def dbt_pipeline():
         task_id="dbt_run_stg",
         bash_command=(
             "cd /usr/local/airflow/dbt_taxi_data_hub && "
-            "dbt run --select models/stg --profiles-dir .. "
+            "dbt run --select models/stg --target prod --profiles-dir .. "
             ),
     )
 
@@ -61,7 +67,7 @@ def dbt_pipeline():
         task_id="dbt_run_dim",
         bash_command=(
             "cd /usr/local/airflow/dbt_taxi_data_hub && "
-            "dbt run --select models/dim --profiles-dir .. "
+            "dbt run --select models/dim --target prod --profiles-dir .. "
             ),
     )
 
@@ -70,7 +76,7 @@ def dbt_pipeline():
         task_id="dbt_test_dim",
         bash_command=(
             "cd /usr/local/airflow/dbt_taxi_data_hub && "
-            "dbt test --select models/dim --profiles-dir .. "
+            "dbt test --select models/dim --target prod --profiles-dir .. "
             ),
     )
 
@@ -79,7 +85,7 @@ def dbt_pipeline():
         task_id="dbt_run_int",
         bash_command=(
             "cd /usr/local/airflow/dbt_taxi_data_hub && "
-            "dbt run --select models/int --profiles-dir .. "
+            "dbt run --select models/int --target prod --profiles-dir .. "
             ),
     )
 
@@ -88,7 +94,7 @@ def dbt_pipeline():
         task_id="dbt_test_int",
         bash_command=(
             "cd /usr/local/airflow/dbt_taxi_data_hub && "
-            "dbt test --select models/int --profiles-dir .. "
+            "dbt test --select models/int --target prod --profiles-dir .. "
             ),
     )
 
@@ -122,7 +128,7 @@ def dbt_pipeline():
     )
 
     # Task dependencies
-    dbt_clean >> dbt_deps >> dbt_seed >> dbt_run_src >> dbt_run_stg >> dbt_run_dim >> dbt_test_dim >> dbt_run_int >> dbt_test_int >> dbt_run_fct >> dbt_test_fct >> dbt_run_mart
+    dbt_env_export >> dbt_clean >> dbt_deps >> dbt_seed >> dbt_run_src >> dbt_run_stg >> dbt_run_dim >> dbt_test_dim >> dbt_run_int >> dbt_test_int >> dbt_run_fct >> dbt_test_fct >> dbt_run_mart
 
 
-dbt_pipeline()
+dbt_pipeline_snf()
