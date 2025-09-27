@@ -1,7 +1,6 @@
 # TAXI DATA HUB
 
-![clay-banks-1KPfcPdbWFM-unsplash](https://github.com/user-attachments/assets/eba261b3-f34b-4001-8e7a-fa3590be0ea2)
-
+![george-bakos-HkDCro16_k8-unsplash](https://github.com/user-attachments/assets/5486dce2-173d-4899-a9b4-6566bf2c1096)
 
 This project was done with the goal to create a complete data warehouse using market best practices.
 It starts with the ingestion of raw data from multiple sources, until the vizualization in dashboard.
