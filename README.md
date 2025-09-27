@@ -39,6 +39,10 @@ Below you can see the data flow provided by dbt docs.
 
 <img width="1851" height="660" alt="dbt-dag" src="https://github.com/user-attachments/assets/84c7f14d-261e-409c-a076-1d5e60bd098b" />
 
+<img width="1851" height="660" alt="dbt-dag (1)" src="https://github.com/user-attachments/assets/b2d12fe4-460b-446c-8940-99a3b6b2a111" />
+<img width="1851" height="660" alt="dbt-dag (2)" src="https://github.com/user-attachments/assets/21bd1fe6-f8be-4537-8a41-936ad9a47496" />
+
+
 ## Data Testing
 DBT also provide an easy and modular way to test the data. 
 Several tests (100+) are done in order to check for nulls, wrong column type, zeros or negatives where could not exit, etc.
