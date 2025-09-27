@@ -8,7 +8,7 @@ This source has data at a high granularity for each taxi trip in New York. With 
 The data was stored and transformed in Snowflake, using dbt as a tool for transformation, python for ingestion and airflow for orchestration. 
 Below the details of it.
 
-![george-bakos-HkDCro16_k8-unsplash](https://github.com/user-attachments/assets/5486dce2-173d-4899-a9b4-6566bf2c1096)
+![george-bakos-HkDCro16_k8-unsplash-min](https://github.com/user-attachments/assets/520ba83d-4f30-49cd-bed8-69976f78e13c)
 
 ## Data Architecture Diagram
 <img width="831" height="540" alt="architecture-diagram3" src="https://github.com/user-attachments/assets/bc979f41-0c6b-4d1e-b714-210be1fc5120" />
@@ -100,3 +100,6 @@ Of course, spark still has its advantage for working with raw data and its paral
 But once the data is loaded into the warehouse, and if the data movement is not massive (i.e. less than 1TB per hour), dbt is very likely to the be a better tool for the job.
 
 **3)** Duckdb for local development vs developing in snowflake
+As mentioned above, developing locally in duckdb was helpful because reduced cloud cost. That could be applied to a company, since the machine used by the developer is already a paid resource that could be leveraged. But there's a considerable downside which development time. Since the sintax between duckdb and snowflake is not the same, at some times you may face some errors when moving to production, which is of course not a good thing (you should spot this in dev). Another downside is data security, since the data needs to be moved to the developer machine, that could lead to potencial data leakage.  
+
+So my conclusion is that you should do that only if resources is stricted, you're starting the project from stratch and you don't have big concerns with your data security or you have other mechanisms to protect the data inside the developer machine.
