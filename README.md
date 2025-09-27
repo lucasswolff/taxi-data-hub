@@ -13,7 +13,6 @@ Below the details of it.
 ## Data Architecture Diagram
 <img width="831" height="540" alt="architecture-diagram3" src="https://github.com/user-attachments/assets/bc979f41-0c6b-4d1e-b714-210be1fc5120" />
 
-
 ## Data Ingestion
 The taxi data in the source is stored in the parquet format. The first step is to download this data and send it to snowflake.
 For this a data pipeline was created using the PUT and COPY commands from Snowflake. That can be found at scripts/snf_ingestion_raw.py
@@ -67,6 +66,7 @@ Gladly dbt can be very helpful in these cases, since it allows to easily and mod
 
 ## Dashboard
 To showcase the results, a simple dashboard was creating using streamlit within snowflake.
+
 <img width="817" height="861" alt="image" src="https://github.com/user-attachments/assets/66f089a5-4b16-4f07-88e3-75cac7f73730" />
 <img width="820" height="446" alt="image" src="https://github.com/user-attachments/assets/837de33a-5b18-41f0-abd4-60fd0e99dccc" />
 
