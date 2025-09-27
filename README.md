@@ -66,12 +66,20 @@ Gladly dbt can be very helpful in these cases, since it allows to easily and mod
 
 ## Conclusion
 **1)** Overall tech stack feedback
-Dbt is a really cool and powerfull tool to work it.
-It make things easy to test and mentioned above, and helps during the documentation process. 
-The lineage provided can also be very helpful for troubleshooting or for overall understanding. 
-And it's very good to prevent repetition and make the code more modular. One example in this project is that the tranformation for cleaning and filtering the yellow taxi and the green taxi are very similar, but with some differences. Dbt provide the macros feature, which allows the developer to reuse the code and adapt if necessary (e.g. change just one part if yellow or green taxi). 
+**Dbt** is a really cool and powerfull tool to work it.
+Dbt makes the job of creating pipelines faster and modular, helping developers to avoid repetition. It also makes creating incremental models straightforward. 
+It make things easy to test and mentioned above, and helps during the documentation process. The lineage provided can also be very helpful for troubleshooting or for overall understanding. 
 
-Aiflow ...
+One example in this project is that the tranformation for cleaning and filtering the yellow taxi and the green taxi are very similar, but with some differences. Using dbt macros, I was able to use the same code twice, and making it adaptable for the different data (yellow vs green). 
+
+Although more trick to setup the environment, once that's done **Airflow** is a great tool for orchestrating dbt and python pipelines. 
+With it we can run the pipeline at a scheduled time, or run once a dependency is complete. That makes it very useful for pipeline like this, where dbt runs just once the raw data is successfully loaded.
+We can also add paratemerts to our DAGs, for example to enable dbt full refresh of data.
+
+**Snowflake** is a very powerfull data warehouse. Managing user and roles permissions is handy, it has some cool features to work with semi structured data and to  it's quite easy to ingest data. 
+One issue I noticed in this particular project was cost. I spent 21 dollars in 10 days to productionize the data. This might not sound like a lot, but I was only one developer, using the cheapest compute option and just working a couple hours a day. I imagine how that would scale in a mid size company. Other point is that since you pay as you use, the cost might no be that easy to predict as a managed cluster like AWS Redshift (where you know how much you'll pay for hour of use). 
+
+On the other hand, I didn't to spend any time setting up and managing the environment, as you probably need in a managed cluster. So a company might save money on that part with less developers or allowing them to focus on delivering value. All these trade off between ease to use and cost needs to be taken into consideration. 
 
 **2)** DBT advantage over spark for data transformation 
 This project is quite similar to another using the same data developed by me https://github.com/lucasswolff/taxi-data-pipeline.
