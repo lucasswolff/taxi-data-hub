@@ -1,5 +1,9 @@
 # TAXI DATA HUB
-This project was created with the goal to create a complete data warehouse using market best practices.
+
+![clay-banks-1KPfcPdbWFM-unsplash](https://github.com/user-attachments/assets/eba261b3-f34b-4001-8e7a-fa3590be0ea2)
+
+
+This project was done with the goal to create a complete data warehouse using market best practices.
 It starts with the ingestion of raw data from multiple sources, until the vizualization in dashboard.
 
 The main datasource can be found at https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page. 
@@ -10,7 +14,6 @@ Below the details of it.
 
 ## Data Architecture Diagram
 <img width="831" height="540" alt="architecture-diagram3" src="https://github.com/user-attachments/assets/bc979f41-0c6b-4d1e-b714-210be1fc5120" />
-
 
 
 ## Data Ingestion
@@ -63,6 +66,11 @@ So it makes sure the upstream layer is completed and tested before the next down
 In order to reduce the cloud cost of running all development in snowflake, the development was using a local instance of duckdb.
 The downside is that the sintax from duckdb in some cases is different from snowflake, throwing unexpected errors in Production.  
 Gladly dbt can be very helpful in these cases, since it allows to easily and modularly change your code if working in prod or dev.
+
+## Dashboard
+To showcase the results, a simple dashboard was creating using streamlit within snowflake.
+
+
 
 ## Conclusion
 **1)** Overall tech stack feedback
