@@ -29,19 +29,19 @@ Lastly, a lockup table for taxi locations - which will be used to bring zone and
 Having all the data stored either in snowflake raw schema or seeds, it's time do an important (and very cool) step in our project: the data transformation.
 For that, the chosen tool was dbt (data build tool). DBT is a SQL-based tool, but with some powerfull engineering, testing and documentation capabilities. 
 
-1a) From the raw layer, the data is sent to a Staging Layer, selecting the columns and datatypes into a tabular format. 
+1) From the raw layer, the data is sent to a Staging Layer, selecting the columns and datatypes into a tabular format. 
 
-1b) From the seeds (lockup tables) we create the DIMs (dimensional tables).
+2) From the seeds (lockup tables) we create the DIMs (dimensional tables).
 
-2)  Then an intermediete (INT) step is done to clean the data, filter it and join the data in Staging with DIM.
+3) Then an intermediete (INT) step is done to clean the data, filter it and join the data in Staging with DIM.
    
-3)  From this cleaned and integrated layer, the data is materilized into two Fact tables: green taxi and yellow taxi
+4) From this cleaned and integrated layer, the data is materilized into two Fact tables: green taxi and yellow taxi
    
-4)  Both are then unioned to have a unified view of the taxi trips
+5) Both are then unioned to have a unified view of the taxi trips
 
    
-5)  Lastly the layer MART is created, there's where all the business logics exist and can be used for analyzes, KPIs and machine learning. 
-    For example, the outliers are flagged (e.g. very high fare, which probably is an error), some KPIs are created and we bring the weather data
+6) Lastly the layer MART is created, there's where all the business logics exist and can be used for analyzes, KPIs and machine learning. 
+   For example, the outliers are flagged (e.g. very high fare, which probably is an error), some KPIs are created and we bring the weather data
 
 You can see below you can see the described data flow: 
 
