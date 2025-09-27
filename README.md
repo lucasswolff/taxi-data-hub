@@ -9,7 +9,8 @@ The data was stored and transformed in Snowflake, using dbt as a tool for transf
 Below the details of it.
 
 ## Data Architecture Diagram
-<img width="827" height="607" alt="architecture-diagram" src="https://github.com/user-attachments/assets/1d70f7eb-1c02-4c9d-a46c-10327beaa704" />
+<img width="831" height="540" alt="architecture-diagram3" src="https://github.com/user-attachments/assets/bc979f41-0c6b-4d1e-b714-210be1fc5120" />
+
 
 
 ## Data Ingestion
