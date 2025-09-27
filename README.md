@@ -28,14 +28,20 @@ Having all the data stored either in snowflake raw schema or seeds, it's time do
 For that, the chosen tool was dbt (data build tool). DBT is a SQL-based tool, but with some powerfull engineering, testing and documentation capabilities. 
 
 1a) From the raw layer, the data is sent to a Staging Layer, selecting the columns and datatypes into a tabular format. 
+
 1b) From the seeds (lockup tables) we create the DIMs (dimensional tables).
+
 2)  Then an intermediete (INT) step is done to clean the data, filter it and join the data in Staging with DIM.
+   
 3)  From this cleaned and integrated layer, the data is materilized into two Fact tables: green taxi and yellow taxi
+   
 4)  Both are then unioned to have a unified view of the taxi trips
+
+   
 5)  Lastly the layer MART is created, there's where all the business logics exist and can be used for analyzes, KPIs and machine learning. 
     For example, the outliers are flagged (e.g. very high fare, which probably is an error), some KPIs are created and we bring the weather data
 
-Below you can see the data flow provided by dbt docs.
+You can see below you can see the described data flow: 
 
 <img width="1851" height="660" alt="dbt-dag (1)" src="https://github.com/user-attachments/assets/b2d12fe4-460b-446c-8940-99a3b6b2a111" />
 <img width="1851" height="660" alt="dbt-dag (2)" src="https://github.com/user-attachments/assets/21bd1fe6-f8be-4537-8a41-936ad9a47496" />
