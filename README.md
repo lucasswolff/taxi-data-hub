@@ -8,8 +8,9 @@ This source has data at a high granularity for each taxi trip in New York. With 
 The data was stored and transformed in Snowflake, using dbt as a tool for transformation, python for ingestion and airflow for orchestration. 
 Below the details of it.
 
-## Data Flow Diagram
-fazer no draw.io
+## Data Architecture Diagram
+<img width="827" height="607" alt="architecture-diagram" src="https://github.com/user-attachments/assets/1d70f7eb-1c02-4c9d-a46c-10327beaa704" />
+
 
 ## Data Ingestion
 The taxi data in the source is stored in the parquet format. The first step is to download this data and send it to snowflake.
@@ -52,10 +53,10 @@ DBT also provide an easy and modular way to test the data.
 Several tests (100+) are done in order to check for nulls, wrong column type, zeros or negatives where could not exit, etc.
 
 ## Orchestration
-The orchestartion tool used is Airflow for the reasons of being open-source, having an extensive online community and integrate well with dbt.
-The flow is similar to what was described above: first it runs the scripts to ingest data into snowflake.
+The orchestration tool chosen is Airflow because it’s open source, integrates well with dbt, and benefits from a large, active community.
+The flow is similar to what was described above. First it runs the scripts to ingest data into snowflake.
 Once all are completed without error, the dbt pipeline runs. This pipeline was broken into several tasks.
-So it make sure the upstream layers is completed and tested before the next downstream runs. 
+So it makes sure the upstream layer is completed and tested before the next downstream runs. 
 
 ## Local development
 In order to reduce the cloud cost of running all development in snowflake, the development was using a local instance of duckdb.
