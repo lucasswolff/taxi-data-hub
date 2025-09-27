@@ -1,7 +1,4 @@
 # TAXI DATA HUB
-
-![george-bakos-HkDCro16_k8-unsplash](https://github.com/user-attachments/assets/5486dce2-173d-4899-a9b4-6566bf2c1096)
-
 This project was done with the goal to create a complete data warehouse using market best practices.
 It starts with the ingestion of raw data from multiple sources, until the vizualization in dashboard.
 
@@ -10,6 +7,8 @@ This source has data at a high granularity for each taxi trip in New York. With 
 
 The data was stored and transformed in Snowflake, using dbt as a tool for transformation, python for ingestion and airflow for orchestration. 
 Below the details of it.
+
+![george-bakos-HkDCro16_k8-unsplash](https://github.com/user-attachments/assets/5486dce2-173d-4899-a9b4-6566bf2c1096)
 
 ## Data Architecture Diagram
 <img width="831" height="540" alt="architecture-diagram3" src="https://github.com/user-attachments/assets/bc979f41-0c6b-4d1e-b714-210be1fc5120" />
@@ -68,8 +67,8 @@ Gladly dbt can be very helpful in these cases, since it allows to easily and mod
 
 ## Dashboard
 To showcase the results, a simple dashboard was creating using streamlit within snowflake.
-
-
+<img width="817" height="861" alt="image" src="https://github.com/user-attachments/assets/66f089a5-4b16-4f07-88e3-75cac7f73730" />
+<img width="820" height="446" alt="image" src="https://github.com/user-attachments/assets/837de33a-5b18-41f0-abd4-60fd0e99dccc" />
 
 ## Conclusion
 **1)** Overall tech stack feedback
