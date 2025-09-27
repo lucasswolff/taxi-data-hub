@@ -71,7 +71,8 @@ To showcase the results, a simple dashboard was creating using streamlit within 
 <img width="820" height="446" alt="image" src="https://github.com/user-attachments/assets/837de33a-5b18-41f0-abd4-60fd0e99dccc" />
 
 ## Conclusion
-**1)** Overall tech stack feedback
+### 1) Overall tech stack feedback
+
 **Dbt** is a really cool and powerfull tool to work it.
 Dbt makes the job of creating pipelines faster and modular, helping developers to avoid repetition. It also makes creating incremental models straightforward. 
 It make things easy to test and mentioned above, and helps during the documentation process. The lineage provided can also be very helpful for troubleshooting or for overall understanding. 
@@ -87,7 +88,8 @@ One issue I noticed in this particular project was cost. I spent 21 dollars in 1
 
 On the other hand, I didn't to spend any time setting up and managing the environment, as you probably need in a managed cluster. So a company might save money on that part with less developers or allowing them to focus on delivering value. All these trade off between ease to use and cost needs to be taken into consideration. 
 
-**2)** DBT advantage over spark for data transformation 
+### 2) DBT advantage over spark for data transformation 
+
 This project is quite similar to another using the same data developed by me https://github.com/lucasswolff/taxi-data-pipeline.
 The project used spark instead of dbt and was mostly hosted in aws.
 
@@ -99,7 +101,8 @@ Another advantage, in this case for me, is that since I greatly more experienced
 Of course, spark still has its advantage for working with raw data and its parallel processing capabilities makes it very suitable for massive data transfers/transformations.
 But once the data is loaded into the warehouse, and if the data movement is not massive (i.e. less than 1TB per hour), dbt is very likely to the be a better tool for the job.
 
-**3)** Duckdb for local development vs developing in snowflake
+### 3) Duckdb for local development vs developing in snowflake
+
 As mentioned above, developing locally in duckdb was helpful because reduced cloud cost. That could be applied to a company, since the machine used by the developer is already a paid resource that could be leveraged. But there's a considerable downside which development time. Since the sintax between duckdb and snowflake is not the same, at some times you may face some errors when moving to production, which is of course not a good thing (you should spot this in dev). Another downside is data security, since the data needs to be moved to the developer machine, that could lead to potencial data leakage.  
 
 So my conclusion is that you should do that only if resources is stricted, you're starting the project from stratch and you don't have big concerns with your data security or you have other mechanisms to protect the data inside the developer machine.
