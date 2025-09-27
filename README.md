@@ -35,6 +35,10 @@ For that, the chosen tool was dbt (data build tool). DBT is a SQL-based tool, bu
 5)  Lastly the layer MART is created, there's where all the business logics exist and can be used for analyzes, KPIs and machine learning. 
     For example, the outliers are flagged (e.g. very high fare, which probably is an error), some KPIs are created and we bring the weather data
 
+Below you can see the data flow provided by dbt docs.
+
+<img width="1851" height="660" alt="dbt-dag" src="https://github.com/user-attachments/assets/84c7f14d-261e-409c-a076-1d5e60bd098b" />
+
 ## Data Testing
 DBT also provide an easy and modular way to test the data. 
 Several tests (100+) are done in order to check for nulls, wrong column type, zeros or negatives where could not exit, etc.
