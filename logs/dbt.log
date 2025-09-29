@@ -251,3 +251,19 @@ https://docs.getdbt.com/docs/configure-your-profile
 [0m10:01:34.428681 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc303467e00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc30376e360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc303e14e60>]}
 [0m10:01:34.428923 [debug] [MainThread]: Flushing usage events
 [0m10:01:35.046841 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:40:46.655551 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735636bbffb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735636e3dfa0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x735638e61190>]}
+
+
+============================== 04:40:46.659132 | 03f177b5-4035-4e42-9c86-381ff78a70fa ==============================
+[0m04:40:46.659132 [info ] [MainThread]: Running with dbt=1.10.7
+[0m04:40:46.659485 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': '/home/lucas/taxi-data-hub', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt docs generate', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m04:40:46.659769 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/lucas/taxi-data-hub/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m04:40:46.660375 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": false, "command_wall_clock_time": 0.03972814, "process_in_blocks": "50760", "process_kernel_time": 0.129255, "process_mem_max_rss": "101888", "process_out_blocks": "16", "process_user_time": 0.829735}
+[0m04:40:46.660716 [debug] [MainThread]: Command `dbt docs generate` failed at 04:40:46.660603 after 0.04 seconds
+[0m04:40:46.660949 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7356394de630>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7356372e5940>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7356372e7500>]}
+[0m04:40:46.661171 [debug] [MainThread]: Flushing usage events
+[0m04:40:47.985470 [debug] [MainThread]: An error was encountered while trying to flush usage events
